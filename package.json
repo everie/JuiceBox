@@ -1,0 +1,28 @@
+{
+  "name": "JuiceBox",
+  "version": "1.0.0",
+  "description": "music player in electron",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "package": "electron-packager . MyApp --platform=win32 --overwrite --arch=x64"
+  },
+  "repository": "https://github.com/everie/JuiceBox",
+  "keywords": [
+    "Electron",
+    "music",
+    "player",
+    "wavesurfer"
+  ],
+  "author": "HE",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "electron": "~1.6.2",
+    "electron-packager": "^8.6.0"
+  },
+  "dependencies": {
+    "mime-types": "^2.1.15",
+    "musicmetadata": "^2.0.5",
+    "underscore": "^1.8.3"
+  }
+}

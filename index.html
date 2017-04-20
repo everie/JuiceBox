@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>JuiceBox</title>
+      <link rel="stylesheet" type="text/css" href="css/layout.css"/>
+      <link id="theme_link" rel="stylesheet" type="text/css" href=""/>
+
+      <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+      <script type="text/javascript" src="script/jquery-3.2.1.min.js"></script>
+      <script type="text/javascript" src="script/jquery-ui.js"></script>
+      <script type="text/javascript" src="script/wavesurfer.js"></script>
+      <script>if (window.module) module = window.module;</script>
+
+  </head>
+  <body>
+  <audio id="player"></audio>
+  <div id="container">
+    <div id="main_container">
+      <div id="playlist_selector"></div>
+      <div id="new_playlist">New playlist</div>
+      <div id="selector_resizer"></div>
+        <div id="playlist_window">
+        <!-- playlist -->
+        </div>
+        <div id="tracker_container">
+            <div id="player_tracker">
+                <!-- tracker -->
+            </div>
+            <div id="tracker_cursor"></div>
+        </div>
+    </div>
+    <div id="player_container">
+      <div id="player_window">
+        <a href="#" class="player_button" data-type="stop">Stop</a>
+        <a href="#" class="player_button" data-type="playPause">PlayPause</a>
+
+          themes:
+          <a href="#" class="theme_button" data-type="green">green</a>
+          <a href="#" class="theme_button" data-type="magenta">magenta</a>
+
+      </div>
+    </div>
+  </div>
+  <div id="context_menu"></div>
+  <div id="pop_over_container">
+      <div id="pop_over_background"></div>
+      <div id="pop_over_window">
+          <div id="pop_over_title">i r title</div>
+          <div id="pop_over_context">i r context</div>
+          <div id="pop_over_buttons">i r buttons</div>
+      </div>
+  </div>
+  </body>
+
+  <script>
+    // You can also require other files to run in this process
+    require('./renderer.js');
+    require('./script/juice.js');
+    require('./script/dragDrop.js');
+  </script>
+</html>

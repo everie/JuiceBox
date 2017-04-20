@@ -1,0 +1,292 @@
+body {
+    overflow: hidden;
+    margin:0px;
+    padding:0px;
+    font-family:verdana;
+    font-size:11px;
+
+
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+:root {
+    --player_height:80px;
+    --selector_width:170px;
+    --selector_resizer_width:2px;
+    --tracker_height:20px;
+    --new_playlist_height:40px;
+
+    --context_menu_item_font_size:12px;
+    --playlist_selector_font_size:12px;
+    --playlist_item_font_size:10px;
+
+    --pop_over_width:300px;
+    --pop_over_height:150px;
+
+    --pop_over_header_height:30px;
+    --pop_over_button_height:40px;
+
+    --pop_over_header_font_size:16px;
+    --pop_over_context_font_size:12px;
+}
+
+#container {
+    width:100%;
+    height:100%;
+    background-color:#fff;
+    position:absolute;
+    display:block;
+}
+
+#main_container {
+    height:calc(100% - var(--player_height));
+    width:100%;
+    position:absolute;
+    top:0px;
+    left:0px;
+}
+
+#player_container {
+    height:var(--player_height);
+    width:100%;
+    position:absolute;
+    bottom:0px;
+    left:0px;
+    overflow-x:hidden;
+    overflow-y:scroll;
+}
+
+#playlist_selector {
+    width:var(--selector_width);
+    height:calc(100% - var(--new_playlist_height));
+    position:absolute;
+    top:0px;
+    left:0px;
+    background-color:#ddd;
+}
+
+#selector_resizer {
+    width:var(--selector_resizer_width);
+    height:100%;
+    left:var(--selector_width);
+    top:0px;
+    position:absolute;
+    background-color:#999;
+    cursor:e-resize;
+}
+
+#new_playlist {
+    width:100%;
+    height:var(--new_playlist_height);
+    left:0px;
+    bottom:0px;
+    position:absolute;
+    cursor:pointer;
+    line-height:var(--new_playlist_height);
+    padding-left:5px;
+    box-sizing:border-box;
+    background-color:#bbb;
+}
+
+#playlist_window {
+    width:calc(100% - (var(--selector_width) + var(--selector_resizer_width)));
+    height:calc(100% - var(--tracker_height));
+    position:absolute;
+    top:0px;
+    right:0px;
+    background-color:#eee;
+    overflow-x:hidden;
+    overflow-y:scroll;
+}
+
+#tracker_container {
+    width:calc(100% - (var(--selector_width) + var(--selector_resizer_width)));
+    height:var(--tracker_height);
+    position:absolute;
+    bottom:0px;
+    right:0px;
+    background-color:#eee;
+}
+
+#player_tracker {
+    width:100%;
+    height:100%;
+    position:absolute;
+    bottom:0px;
+    right:0px;
+    background: linear-gradient(to top, rgba(170,170,170,1) 0%,rgba(170,170,170,0) 90%);
+    cursor:pointer;
+    z-index:0;
+}
+
+#tracker_cursor {
+    width:1px;
+    height:var(--tracker_height);
+    position:absolute;
+    bottom:0px;
+    left:0px;
+    opacity:0;
+    display:none;
+    background-color:rgba(0, 0, 0, 0.3);
+    pointer-events: none;
+}
+
+#player_window {
+    width:100%;
+    height:100%;
+    position:absolute;
+    bottom:0px;
+    left:0px;
+    background-color:#eee;
+}
+
+.playlist_selector_item {
+    width:100%;
+    font-size:var(--playlist_selector_font_size);
+    cursor:default;
+    padding:5px;
+    box-sizing:border-box;
+    display:block;
+}
+
+.playlist_selector_item:hover {
+    background-color:#eee;
+}
+
+.playlist_selected {
+    color:#900;
+}
+
+.playlist_window_item {
+    width:100%;
+    font-size:var(--playlist_item_font_size);
+    cursor:default;
+    padding:3px;
+    box-sizing:border-box;
+}
+
+.playlist_window_item:hover {
+    background-color:#fff;
+}
+
+.track_selected {
+    color:#900;
+}
+
+#menu_container {
+    width:0px;
+    height:0px;
+    position:absolute;
+    left:0px;
+    top:0px;
+}
+
+#context_menu {
+    left:0px;
+    top:0px;
+    display:none;
+    background-color:#eee;
+    border-color:#000;
+    border-style:solid;
+    border-width:1px;
+    position:absolute;
+    padding:1px;
+    box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.context_menu_splitter {
+    width:100%;
+    height:1px;
+    background-color:#000;
+    margin-top:3px;
+    margin-bottom:3px;
+}
+
+.context_menu_item {
+    width:100%;
+    font-size:var(--context_menu_item_font_size);
+    cursor:default;
+    padding:5px;
+    box-sizing:border-box;
+}
+
+.context_menu_item:hover {
+    background-color:#fff;
+}
+
+#pop_over_container {
+    display:none;
+}
+
+#pop_over_background {
+    position:absolute;
+    width:100%;
+    height:100%;
+    background-color:rgba(0, 0, 0, 0.7);
+}
+
+#pop_over_window {
+    position:absolute;
+    width:var(--pop_over_width);
+    height:var(--pop_over_height);
+    left:calc(50% - (var(--pop_over_width) / 2));
+    top:calc(25% - (var(--pop_over_height) / 2));
+    background-color:#eee;
+    border-color:#000;
+    border-style:solid;
+    border-width:1px;
+    box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.5);
+}
+
+#pop_over_title {
+    position:absolute;
+    width:100%;
+    height:var(--pop_over_header_height);
+    top:0px;
+    left:0px;
+    font-size:var(--pop_over_header_font_size);
+    background-color:#ddd;
+    padding-left:10px;
+    line-height:var(--pop_over_header_height);
+    box-sizing: border-box;
+}
+
+#pop_over_context {
+    position:absolute;
+    width:100%;
+    height:calc(100% - (var(--pop_over_header_height) + var(--pop_over_button_height)));
+    top:var(--pop_over_header_height);
+    left:0px;
+    box-sizing: border-box;
+    padding:10px;
+    font-size:var(--pop_over_context_font_size);
+}
+
+#pop_over_buttons {
+    position:absolute;
+    width:100%;
+    height:var(--pop_over_button_height);
+    text-align: right;
+    vertical-align: bottom;
+    bottom:0px;
+    left:0px;
+    box-sizing: border-box;
+    padding:10px;
+}
+
+.track_row {
+    display:inline-block;
+    vertical-align: top;
+    padding:2px;
+    box-sizing: border-box;
+    font-size:11px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
