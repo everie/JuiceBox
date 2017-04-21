@@ -7,9 +7,9 @@
       <link id="theme_link" rel="stylesheet" type="text/css" href=""/>
 
       <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
-      <script type="text/javascript" src="script/jquery-3.2.1.min.js"></script>
-      <script type="text/javascript" src="script/jquery-ui.js"></script>
-      <script type="text/javascript" src="script/wavesurfer.js"></script>
+      <script type="text/javascript" src="uiScripts/jquery-3.2.1.min.js"></script>
+      <script type="text/javascript" src="uiScripts/jquery-ui.js"></script>
+      <script type="text/javascript" src="uiScripts/wavesurfer.js"></script>
       <script>if (window.module) module = window.module;</script>
 
   </head>
@@ -54,9 +54,7 @@
   </body>
 
   <script>
-    // You can also require other files to run in this process
-    require('./renderer.js');
-    require('./script/juice.js');
-    require('./script/dragDrop.js');
+    require('./scripts/juice.js');
+    require('./scripts/dragDrop.js');
   </script>
 </html>

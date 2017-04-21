@@ -25,6 +25,10 @@ pdata = {
             pixelRatio: 1,
             hideScrollbar: true
         });
+        if (data.currentPlaylist !== undefined && data.settings.active_track !== '') {
+            var activeTrack = _.findWhere(data.currentPlaylist.tracks, {id: data.settings.active_track});
+            this.player.load(activeTrack.file);
+        }
     },
     initDragDropFunctionality: function() {
         $('#playlist_window').sortable({
@@ -40,10 +44,10 @@ pdata = {
         $('.theme_button').click(function() {
             switch ($(this).data('type')) {
                 case "green":
-                    $('#theme_link').attr('href', 'css/themes/css2.css');
+                    $('#theme_link').attr('href', 'themes/css2.css');
                     break;
                 case "magenta":
-                    $('#theme_link').attr('href', 'css/themes/css.css');
+                    $('#theme_link').attr('href', 'themes/css.css');
                     break;
             }
         });
@@ -211,7 +215,7 @@ function setActiveTrack(id) {
         if (child.data('id') === data.settings.active_track) {
             child.attr('class', wdata.playlistItemClass + wdata.playlistItemActiveClass);
         } else {
-            if (child.attr('class') === wdata.playlistItemClass + wdata.playlistItemActiveClass) {
+            if (child.attr('class').indexOf(wdata.playlistItemClass + wdata.playlistItemActiveClass) !== -1) {
                 child.attr('class', wdata.playlistItemClass);
             }
         }
