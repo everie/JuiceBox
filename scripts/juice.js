@@ -6,12 +6,12 @@ var data = require('./data.js');
 var pdata = require('./playerData.js');
 
 $(document).ready(function() {
+    pdata.initThemeFunctionality();
     setUpDirs();
     data.settings = JSON.parse(fs.readFileSync(data.settingsFile, 'utf-8'));
     pdata.loadTracksAndPlaylist();
-    pdata.initPlayer();
     pdata.initDragDropFunctionality();
-    pdata.initThemeFunctionality();
+    pdata.initPlayer();
     data.setTitle('');
 });
 

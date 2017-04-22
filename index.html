@@ -17,11 +17,15 @@
   <audio id="player"></audio>
   <div id="container">
     <div id="main_container">
-      <div id="playlist_selector"></div>
+      <div id="playlist_selector" data-window="selector"></div>
       <div id="new_playlist">New playlist</div>
       <div id="selector_resizer"></div>
-        <div id="playlist_window">
+        <div id="playlist_window" data-window="playlist">
         <!-- playlist -->
+        </div>
+        <div id="loading_bar">
+            <div id="loading_bar_progress"></div>
+            <div id="loading_bar_status">I Will Load You</div>
         </div>
         <div id="tracker_container">
             <div id="player_tracker">

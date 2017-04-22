@@ -9,9 +9,11 @@ var data = {
     settingsFile: 'data/settings.json',
     playlistsFile: 'data/playlists.json',
     playlistsDir: 'playlists/',
+    themesDir: 'themes/',
     defaultNoSettings: {
         active_playlist: '',
-        active_track: ''
+        active_track: '',
+        active_theme: 'themes/css.css',
     },
     trackerHeight: 20,
     trackerHoverHeight: 40,

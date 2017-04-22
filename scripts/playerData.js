@@ -23,9 +23,12 @@ pdata = {
             barWidth: 2,
             normalize: true,
             pixelRatio: 1,
-            hideScrollbar: true
+            hideScrollbar: true,
+            cursorColor: '#0ee',
+            waveColor: '#066',
+            progressColor: '#0cc'
         });
-        if (data.currentPlaylist !== undefined && data.settings.active_track !== '') {
+        if (data.currentPlaylist !== undefined && _.findWhere(data.currentPlaylist, {id: data.settings.active_track})) {
             var activeTrack = _.findWhere(data.currentPlaylist.tracks, {id: data.settings.active_track});
             this.player.load(activeTrack.file);
         }
@@ -41,6 +44,7 @@ pdata = {
         });
     },
     initThemeFunctionality: function() {
+        $('#theme_link').attr('href', 'themes/css.css');
         $('.theme_button').click(function() {
             switch ($(this).data('type')) {
                 case "green":

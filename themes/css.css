@@ -1,3 +1,66 @@
+:root {
+    --text_color:#099;
+    --text_color_bright:#0cc;
+    --background_color:#222;
+    --background_color_bright:#111;
+    --resizer_color:#111;
+    --link-color:#eee;
+    --wave_background_color:#888;
+    --item_hover_color:#233;
+}
+
+a {
+    color:var(--link-color);
+}
+
+body {
+    color:var(--text_color);
+}
+
 #playlist_window {
-    background-color:#f0f;
+    background-color:var(--background_color);
+}
+
+#playlist_selector {
+    background-color:var(--background_color);
+}
+
+#player_window {
+    background-color:var(--background_color);
+}
+
+#selector_resizer {
+    background-color:var(--resizer_color);
+}
+
+#new_playlist {
+    background: linear-gradient(to bottom, var(--background_color) 0%, var(--background_color_bright) 100%);
+}
+
+#tracker_container {
+    background-color:var(--background_color);
+}
+
+#player_tracker {
+    background: linear-gradient(to top, rgba(20,20,20,1) 0%,rgba(20,20,20,0) 60%);
+}
+
+#tracker_cursor {
+    background-color:rgba(255, 255, 255, 0.5);
+}
+
+.playlist_selector_item:hover {
+    background-color:var(--item_hover_color);
+}
+
+.playlist_selected {
+    color:var(--text_color_bright);
+}
+
+.playlist_window_item:hover {
+    background-color:var(--item_hover_color);
+}
+
+.track_selected {
+    color:var(--text_color_bright);
 }

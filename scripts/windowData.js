@@ -89,7 +89,6 @@ var wdata = {
             + '<div class="track_row" style="width:23%;">' + track.artist + '</div>'
             + '<div class="track_row" style="width:25%;">' + track.title + '</div>'
             + '<div class="track_row" style="width:25%;">' + track.album + '</div>'
-            + '<div class="track_row" style="width:8%;">' + displayTime(track.length.total) + '</div>'
             + '<div class="track_row" style="width:8%;">' + track.year + '</div>'
             + '<div class="track_row" style="width:9%;">' + track.genre + '</div>'
             + '</div>';
