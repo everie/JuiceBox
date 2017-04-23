@@ -267,6 +267,7 @@ pdata = {
         });
     },
     removeTrackFromPlaylist: function(id) {
+        // FIX THIS TO TAKE IN ARRAY
         var playlistPath = data.getPlaylistPathById(data.settings.active_playlist);
         data.currentPlaylist.tracks = _.reject(data.currentPlaylist.tracks, {id: id});
         fs.writeFileSync(playlistPath, JSON.stringify(data.currentPlaylist, null, 2), 'utf-8');

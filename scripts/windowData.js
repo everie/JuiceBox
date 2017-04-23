@@ -163,6 +163,13 @@ $(document).mouseup(function (e) {
     if (!contextMenu.is(e.target) && contextMenu.has(e.target).length === 0) {
         contextMenu.hide();
     }
+}).on('keydown', function(e) {
+    if (e.key === 'Delete') {
+        $.each($('#playlist_window').children('.track_selected_to_sort'), function(i, item) {
+            // FIX THIS TO PRODUCE ARRAY
+            pdata.removeTrackFromPlaylist($(item).data('id'));
+        });
+    }
 });
 popOverBackground.click(function() {
     popOverContainer.hide();
