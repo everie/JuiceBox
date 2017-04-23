@@ -1,12 +1,13 @@
 :root {
     --text_color:#099;
-    --text_color_bright:#0cc;
+    --text_color_bright:#6ff;
     --background_color:#222;
     --background_color_bright:#111;
     --resizer_color:#111;
     --link-color:#eee;
     --wave_background_color:#888;
     --item_hover_color:#233;
+    --context_menu_background_color:#333;
 }
 
 a {
@@ -63,4 +64,28 @@ body {
 
 .track_selected {
     color:var(--text_color_bright);
+}
+
+.track_placeholder {
+    background-color:#111;
+}
+
+.track_selected_to_sort {
+    background-color:var(--item_hover_color);
+}
+
+#context_menu {
+    background-color: var(--background_color);
+}
+
+.context_menu_item:hover {
+    background-color: var(--background_color_bright);
+}
+
+#pop_over_window {
+    color:#000;
+}
+
+#pop_over_title {
+    color:#000;
 }

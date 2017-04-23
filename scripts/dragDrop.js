@@ -70,7 +70,7 @@ function loopThroughFiles(array) {
 function readFile(array) {
     var filepath = array[iterator];
     var stream = fs.createReadStream(filepath);
-    var parser = mmd(stream, function(err, meta) {
+    var parser = mmd(stream, {duration: true}, function(err, meta) {
 
         var track = {
             title: meta.title,
@@ -79,6 +79,7 @@ function readFile(array) {
             genre: meta.genre[0],
             position: meta.track.no,
             year: meta.year,
+            duration: meta.duration,
             file: filepath,
             id: data.generateId(10)
         };

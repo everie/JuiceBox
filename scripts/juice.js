@@ -5,15 +5,30 @@ var fs = require('fs');
 var data = require('./data.js');
 var pdata = require('./playerData.js');
 
+//pdata.setTheme();
+
 $(document).ready(function() {
-    pdata.initThemeFunctionality();
     setUpDirs();
     data.settings = JSON.parse(fs.readFileSync(data.settingsFile, 'utf-8'));
-    pdata.loadTracksAndPlaylist();
-    pdata.initDragDropFunctionality();
-    pdata.initPlayer();
+    loadSelectedTheme(data.settings.active_theme);
+
+
+    pdata.initThemeFunctionality();
     data.setTitle('');
+
+    pdata.initDragDropFunctionality();
+    $("#playlist_selector").queue(function() {
+        pdata.loadSelector();
+        $('#playlist_window').queue(function() {
+            pdata.loadTracklist();
+            pdata.initPlayer();
+        });
+    });
 });
+
+function loadSelectedTheme(theme) {
+    $('head').append('<link id="theme_link" rel="stylesheet" type="text/css" href="' + theme + '"/>');
+}
 
 function setUpDirs() {
     // PLAYLIST DIR

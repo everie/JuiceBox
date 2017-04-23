@@ -19,7 +19,7 @@ var wdata = {
     playlistItemActiveClass: ' track_selected',
     selectorItemClass: 'playlist_selector_item',
     selectorItemActiveClass: ' playlist_selected',
-    trackerExpandTime: 200,
+    trackerExpandTime: 100,
     showContext: function(x, y, id, type) {
         switch (type) {
             case "track":
@@ -54,7 +54,7 @@ var wdata = {
 
             switch (divType) {
                 case "playlistPlay":
-
+                    pdata.playPlaylist(divId);
                     break;
                 case "playlistLoad":
                     pdata.loadPlaylist(divId);
@@ -64,6 +64,16 @@ var wdata = {
                     break;
                 case "playlistRemove":
                     pdata.removePlaylist(divId);
+                    break;
+
+                case "trackPlay":
+                    pdata.playTrack(divId);
+                    break;
+                case "trackNext":
+
+                    break;
+                case "trackRemove":
+                    pdata.removeTrackFromPlaylist(divId);
                     break;
             }
 
@@ -89,6 +99,7 @@ var wdata = {
             + '<div class="track_row" style="width:23%;">' + track.artist + '</div>'
             + '<div class="track_row" style="width:25%;">' + track.title + '</div>'
             + '<div class="track_row" style="width:25%;">' + track.album + '</div>'
+            + '<div class="track_row" style="width:8%;">' + displayTime(track.duration) + '</div>'
             + '<div class="track_row" style="width:8%;">' + track.year + '</div>'
             + '<div class="track_row" style="width:9%;">' + track.genre + '</div>'
             + '</div>';
@@ -179,9 +190,7 @@ tracker.mouseenter(function() {
     }, {
         duration: wdata.trackerExpandTime,
             step: function (now, fx) {
-                p.params.height = now;
-                p.drawer.setHeight(now);
-                p.drawBuffer();
+                animateWaveform(p, now);
             }
         }
     );
@@ -202,9 +211,7 @@ tracker.mouseenter(function() {
         }, {
         duration: wdata.trackerExpandTime,
             step: function (now, fx) {
-                p.params.height = now;
-                p.drawer.setHeight(now);
-                p.drawBuffer();
+                animateWaveform(p, now);
             }
         });
 }).mousemove(function(e) {
@@ -212,6 +219,12 @@ tracker.mouseenter(function() {
         left: e.offsetX + 'px'
     });
 });
+
+function animateWaveform(p, height) {
+    p.params.height = height;
+    p.drawer.setHeight(height);
+    p.drawBuffer();
+}
 
 $('.player_button').click(function() {
     switch ($(this).data('type')) {
