@@ -2005,17 +2005,15 @@ WaveSurfer.util.extend(WaveSurfer.Drawer.MultiCanvas, {
             this.removeCanvas();
         }
 
-        for (var i in this.canvases) {
+        this.canvases.forEach((canvas, i)=>{
             // Add some overlap to prevent vertical white stripes, keep the width even for simplicity.
-            var canvasWidth = this.maxCanvasWidth + 2 * Math.ceil(this.params.pixelRatio / 2);
+            const canvasWidth = i === this.canvases.length - 1
+              ? this.maxCanvasWidth + 2 * Math.ceil(this.params.pixelRatio / 2)
+              : this.width - (this.maxCanvasWidth * i);
 
-            if (i == this.canvases.length - 1) {
-                canvasWidth = this.width - (this.maxCanvasWidth * (this.canvases.length - 1));
-            }
-
-            this.updateDimensions(this.canvases[i], canvasWidth, this.height);
-            this.clearWaveForEntry(this.canvases[i]);
-        }
+            this.updateDimensions(canvas, canvasWidth, this.height);
+            this.clearWaveForEntry(canvas);
+        });
     },
 
     addCanvas: function () {
