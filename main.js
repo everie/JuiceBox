@@ -30,6 +30,11 @@ function createWindow () {
   // Open the DevTools.
    mainWindow.webContents.openDevTools();
 
+  const devtron = require('devtron');
+  if (devtron) {
+    devtron.install();
+  }
+
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {
     // Dereference the window object, usually you would store windows
